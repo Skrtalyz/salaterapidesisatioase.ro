@@ -1,0 +1,6 @@
+{
+  "name": "Protocolul de Conservare Enzimatică",
+  "description": "Pagina oficială de vânzare a Protocolului de Conservare Enzimatică: cel mai mare kit de rețete de salate metabolice și conservare enzimatică din România.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
