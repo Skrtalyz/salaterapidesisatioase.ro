@@ -11,25 +11,16 @@ import { PricingSection } from './components/PricingSection';
 import { GuaranteeSection } from './components/GuaranteeSection';
 import { FaqSection } from './components/FaqSection';
 import { Footer } from './components/Footer';
-import { CheckoutModal } from './components/CheckoutModal';
 import { WhatsAppModal } from './components/WhatsAppModal';
 
 export default function App() {
-  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
   const [isWhatsAppOpen, setIsWhatsAppOpen] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState<'basic' | 'complete'>('complete');
 
-  const scrollToPricing = (planId?: 'basic' | 'complete') => {
-    if (planId) setSelectedPlan(planId);
+  const scrollToPricing = () => {
     const pricingEl = document.getElementById('pricing-section');
     if (pricingEl) {
       pricingEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-  };
-
-  const handleOpenCheckout = (planId: 'basic' | 'complete') => {
-    setSelectedPlan(planId);
-    setIsCheckoutOpen(true);
   };
 
   return (
@@ -63,7 +54,7 @@ export default function App() {
         <SummaryPillarsSection />
 
         {/* 9. TABELA COMPARATIVA DE PREÇOS (EFEITO DECOY) */}
-        <PricingSection onSelectPlan={handleOpenCheckout} />
+        <PricingSection />
 
         {/* 10. GARANTIA 15 DIAS INCONDICIONAL */}
         <GuaranteeSection />
@@ -77,13 +68,6 @@ export default function App() {
 
       {/* 12. FOOTER */}
       <Footer />
-
-      {/* Interactive Checkout Modal */}
-      <CheckoutModal
-        isOpen={isCheckoutOpen}
-        onClose={() => setIsCheckoutOpen(false)}
-        selectedPlanId={selectedPlan}
-      />
 
       {/* WhatsApp Support Direct Modal */}
       <WhatsAppModal
