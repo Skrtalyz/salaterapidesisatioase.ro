@@ -105,13 +105,16 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectPlan }) 
 
             {/* CTA Basic */}
             <div>
-              <button
+              <a
                 id="btn-select-basic-plan"
+                href={basicPlan.checkoutUrl || 'https://pay.hotmart.com/H107690169O?off=31vemewe&checkoutMode=10'}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => onSelectPlan('basic')}
-                className="w-full bg-[#F5F5F7] hover:bg-neutral-200 active:scale-[0.98] text-[#1D1D1F] font-semibold text-sm sm:text-base py-3.5 px-6 rounded-full transition-all flex items-center justify-center gap-2 cursor-pointer border border-black/10"
+                className="w-full bg-[#F5F5F7] hover:bg-neutral-200 active:scale-[0.98] text-[#1D1D1F] font-semibold text-sm sm:text-base py-3.5 px-6 rounded-full transition-all flex items-center justify-center gap-2 cursor-pointer border border-black/10 no-underline text-center"
               >
-                <span>{lang === 'pt' ? 'Selecionar Plano Básico (39 RON)' : 'Alege Planul de Bază (39 RON)'}</span>
-              </button>
+                <span>{lang === 'pt' ? 'Selecionar Plano Básico (7,90 €)' : 'Alege Planul de Bază (7,90 €)'}</span>
+              </a>
               <div className="mt-2.5 text-center text-[11px] text-[#86868B]">
                 {lang === 'pt' ? 'Entrega digital instantânea • Sem bônus' : 'Livrare digitală instantanee • Fără bonusuri'}
               </div>
@@ -197,14 +200,17 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectPlan }) 
 
             {/* CTA Complete */}
             <div>
-              <button
+              <a
                 id="btn-select-complete-plan"
+                href={completePlan.checkoutUrl || 'https://pay.hotmart.com/N107697844Q?off=1ocjasuy&checkoutMode=10'}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => onSelectPlan('complete')}
-                className="w-full bg-[#0071E3] hover:bg-[#0077ED] active:scale-[0.98] text-white font-medium text-base py-4 px-6 rounded-full shadow-[0_4px_16px_rgba(0,113,227,0.3)] transition-all flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full bg-[#0071E3] hover:bg-[#0077ED] active:scale-[0.98] text-white font-medium text-base py-4 px-6 rounded-full shadow-[0_4px_16px_rgba(0,113,227,0.3)] transition-all flex items-center justify-center gap-2 cursor-pointer no-underline text-center"
               >
-                <span>{lang === 'pt' ? 'Adquirir Pacote Completo' : 'Comandă Pachetul Complet'}</span>
+                <span>{lang === 'pt' ? 'Adquirir Pacote Completo (14,90 €)' : 'Comandă Pachetul Complet (14,90 €)'}</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </a>
 
               <div className="mt-3 text-center">
                 <div className="text-[11px] text-[#34C759] font-medium">

@@ -41,6 +41,7 @@ export interface PricingPlan {
   priceRon: string;
   originalPriceEur: string;
   originalPriceRon: string;
+  checkoutUrl?: string;
   isPopular?: boolean;
   features: {
     included: boolean;

@@ -49,6 +49,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
         priceRon: completePlan.priceRon,
         originalRon: isPt ? `aprox. ${completePlan.originalPriceRon}` : completePlan.originalPriceRon,
         savings: isPt ? 'R$ 273' : '273 RON',
+        checkoutUrl: completePlan.checkoutUrl || 'https://pay.hotmart.com/N107697844Q?off=1ocjasuy&checkoutMode=10',
         bonusesIncluded: true
       }
     : {
@@ -57,11 +58,16 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
         priceRon: basicPlan.priceRon,
         originalRon: isPt ? `aprox. ${basicPlan.originalPriceRon}` : basicPlan.originalPriceRon,
         savings: isPt ? 'R$ 60' : '60 RON',
+        checkoutUrl: basicPlan.checkoutUrl || 'https://pay.hotmart.com/H107690169O?off=31vemewe&checkoutMode=10',
         bonusesIncluded: false
       };
 
   const handleCompleteOrder = (e: React.FormEvent) => {
     e.preventDefault();
+    if (planDetails.checkoutUrl) {
+      window.location.href = planDetails.checkoutUrl;
+      return;
+    }
     setIsSuccess(true);
   };
 
@@ -144,7 +150,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                     : 'text-[#86868B] hover:text-[#1D1D1F]'
                 }`}
               >
-                {isPt ? 'Essencial (R$ 39)' : 'Esențial (39 RON)'}
+                {isPt ? 'Básico (7,90 € / 39 RON)' : 'De Bază (7,90 € / 39 RON)'}
               </button>
               <button
                 type="button"
@@ -155,7 +161,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                     : 'text-[#86868B] hover:text-[#1D1D1F]'
                 }`}
               >
-                {isPt ? 'Completo (R$ 74)' : 'Complet (74 RON)'}
+                {isPt ? 'Completo (14,90 € / 74 RON)' : 'Complet (14,90 € / 74 RON)'}
               </button>
             </div>
 
@@ -293,7 +299,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
               type="submit"
               className="w-full bg-[#0071E3] hover:bg-[#0077ED] active:scale-[0.98] text-white font-medium text-base py-4 px-6 rounded-full shadow-[0_4px_16px_rgba(0,113,227,0.3)] transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
-              <span>{isPt ? `Finalizar Pedido (${planDetails.priceRon})` : `Finalizează Comanda (${planDetails.priceRon})`}</span>
+              <span>{isPt ? `Ir para Pagamento Seguro (${planDetails.priceEur} / ${planDetails.priceRon})` : `Mergi la Plata Securizată (${planDetails.priceEur} / ${planDetails.priceRon})`}</span>
               <ArrowRight className="w-4 h-4" />
             </button>
 
