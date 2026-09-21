@@ -10,7 +10,7 @@ interface RecipesShowcaseSectionProps {
 }
 
 export const RecipesShowcaseSection: React.FC<RecipesShowcaseSectionProps> = ({ onCtaClick }) => {
-  const { copy, lang } = useLanguage();
+  const { copy } = useLanguage();
   const { recipes } = copy;
 
   return (
@@ -33,7 +33,7 @@ export const RecipesShowcaseSection: React.FC<RecipesShowcaseSectionProps> = ({ 
                   target.src = 'https://i.imgur.com/cGVyURq.jpeg';
                 }
               }}
-              alt={lang === 'pt' ? 'Combinações que Ativam a Queima de Gordura' : 'Combinații care Activează Arderea Grăsimilor'}
+              alt="Combinații care Activează Arderea Grăsimilor"
               referrerPolicy="no-referrer"
               className="w-full max-w-md sm:max-w-xl lg:max-w-2xl h-auto object-contain block mix-blend-multiply"
             />
@@ -86,7 +86,7 @@ export const RecipesShowcaseSection: React.FC<RecipesShowcaseSectionProps> = ({ 
                   isFeatured ? 'border-white/10 text-neutral-300' : 'border-black/[0.05] text-[#86868B]'
                 }`}>
                   <ShieldCheck className={`w-3.5 h-3.5 shrink-0 ${isFeatured ? 'text-emerald-400' : 'text-[#34C759]'}`} />
-                  <span>{lang === 'pt' ? 'Calibrado com precisão enzimática' : 'Calibrat cu precizie enzimatică'}</span>
+                  <span>Calibrat cu precizie enzimatică</span>
                 </div>
               </div>
             );

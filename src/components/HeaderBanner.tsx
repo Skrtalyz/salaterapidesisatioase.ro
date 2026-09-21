@@ -1,30 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Sparkles, Clock } from 'lucide-react';
-import { useLanguage } from '../context/LanguageContext';
 
 export const HeaderBanner: React.FC = () => {
-  const { lang } = useLanguage();
   const [currentDate, setCurrentDate] = useState<string>('');
   const [timeLeft, setTimeLeft] = useState({ minutes: 14, seconds: 35 });
 
   useEffect(() => {
-    // Dynamic date formatting in Romanian & Portuguese
     const now = new Date();
-    if (lang === 'ro') {
-      const formatted = now.toLocaleDateString('ro-RO', {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric'
-      });
-      setCurrentDate(formatted);
-    } else {
-      const formatted = now.toLocaleDateString('pt-BR', {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric'
-      });
-      setCurrentDate(formatted);
-    }
+    const formatted = now.toLocaleDateString('ro-RO', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    });
+    setCurrentDate(formatted);
 
     const timer = setInterval(() => {
       setTimeLeft(prev => {
@@ -37,7 +25,7 @@ export const HeaderBanner: React.FC = () => {
       });
     }, 1000);
     return () => clearInterval(timer);
-  }, [lang]);
+  }, []);
 
   const formatTime = (num: number) => num.toString().padStart(2, '0');
 
@@ -52,16 +40,14 @@ export const HeaderBanner: React.FC = () => {
           <span className="flex items-center gap-1.5 font-semibold text-neutral-100">
             <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
             <span>
-              {lang === 'ro'
-                ? `Reducere specială valabilă doar astăzi, ${currentDate || 'astăzi'}: Acces eliberat`
-                : `Desconto especial válido somente hoje, ${currentDate || 'hoje'}: Acesso liberado`}
+              {`Reducere specială valabilă doar astăzi, ${currentDate || 'astăzi'}: Acces eliberat`}
             </span>
           </span>
         </div>
 
         <div className="flex items-center gap-2 bg-white/10 px-2.5 py-0.5 rounded-full text-[11px] font-mono ml-auto sm:ml-0 text-neutral-300">
           <Clock className="w-3 h-3 text-amber-400" />
-          <span>{lang === 'ro' ? 'Expiră în:' : 'Expira em:'}</span>
+          <span>Expiră în:</span>
           <span className="text-white font-bold tracking-wider">
             {formatTime(timeLeft.minutes)}:{formatTime(timeLeft.seconds)}
           </span>

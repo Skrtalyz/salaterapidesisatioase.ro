@@ -15,7 +15,7 @@ interface WhatYouGetSectionProps {
 }
 
 export const WhatYouGetSection: React.FC<WhatYouGetSectionProps> = ({ onCtaClick }) => {
-  const { copy, lang } = useLanguage();
+  const { copy } = useLanguage();
   const { deliverables } = copy;
 
   const getIcon = (index: number) => {
@@ -47,7 +47,7 @@ export const WhatYouGetSection: React.FC<WhatYouGetSectionProps> = ({ onCtaClick
           <div className="flex justify-center my-4">
             <img
               src="https://i.imgur.com/85nRSSF.png"
-              alt={lang === 'pt' ? 'O Que Você Vai Receber - Entrega Imediata' : 'Ce Vei Primi - Livrare Imediată'}
+              alt="Ce Vei Primi - Livrare Imediată"
               referrerPolicy="no-referrer"
               className="w-full max-w-md sm:max-w-lg h-auto object-contain drop-shadow-sm"
             />
@@ -85,7 +85,7 @@ export const WhatYouGetSection: React.FC<WhatYouGetSectionProps> = ({ onCtaClick
                 <span className="w-4 h-4 rounded-full bg-[#34C759]/15 text-[#248A3D] flex items-center justify-center shrink-0">
                   ✓
                 </span>
-                <span>{lang === 'pt' ? 'Incluso no pacote digital' : 'Inclus în pachetul digital'}</span>
+                <span>Inclus în pachetul digital</span>
               </div>
             </div>
           ))}

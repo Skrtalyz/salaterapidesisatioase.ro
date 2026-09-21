@@ -7,7 +7,7 @@ import {
 import { useLanguage } from '../context/LanguageContext';
 
 export const GuaranteeSection: React.FC = () => {
-  const { copy, lang } = useLanguage();
+  const { copy } = useLanguage();
   const { guarantee } = copy;
 
   return (
@@ -20,14 +20,14 @@ export const GuaranteeSection: React.FC = () => {
             {/* Apple Guarantee Emblem */}
             <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#F5F5F7] border border-black/[0.08] text-[#1D1D1F] flex flex-col items-center justify-center shrink-0 shadow-2xs">
               <ShieldCheck className="w-7 h-7 text-[#0071E3] mb-1" />
-              <span className="text-[11px] font-bold uppercase leading-tight">{lang === 'pt' ? '15 Dias' : '15 Zile'}</span>
-              <span className="text-[9px] text-[#86868B] font-medium leading-tight">{lang === 'pt' ? 'Garantia' : 'Garanție'}</span>
+              <span className="text-[11px] font-bold uppercase leading-tight">15 Zile</span>
+              <span className="text-[9px] text-[#86868B] font-medium leading-tight">Garanție</span>
             </div>
 
             {/* Guarantee Content */}
             <div className="text-center sm:text-left">
               <span className="text-xs font-semibold text-[#0071E3] uppercase tracking-wider block mb-1">
-                {lang === 'pt' ? 'Compromisso de Satisfação' : 'Angajament de Satisfacție'}
+                Angajament de Satisfacție
               </span>
 
               <h3 className="text-2xl sm:text-3xl font-bold text-[#1D1D1F] mb-3 tracking-tight">
@@ -46,7 +46,7 @@ export const GuaranteeSection: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <RotateCcw className="w-4 h-4 text-[#0071E3] shrink-0" />
-                  <span>{lang === 'pt' ? 'Reembolso simplificado sem burocracia' : 'Rambursare simplificată fără birocrație'}</span>
+                  <span>Rambursare simplificată fără birocrație</span>
                 </div>
               </div>
             </div>

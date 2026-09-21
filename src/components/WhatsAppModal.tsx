@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { X, MessageCircle, Send, CheckCircle2 } from 'lucide-react';
-import { useLanguage } from '../context/LanguageContext';
 
 interface WhatsAppModalProps {
   isOpen: boolean;
@@ -8,21 +7,16 @@ interface WhatsAppModalProps {
 }
 
 export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({ isOpen, onClose }) => {
-  const { lang } = useLanguage();
   const [message, setMessage] = useState('');
   const [isSent, setIsSent] = useState(false);
 
   if (!isOpen) return null;
 
-  const isPt = lang === 'pt';
-
   const handleSend = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSent(true);
     setTimeout(() => {
-      const defaultMsg = isPt 
-        ? 'Olá! Gostaria de mais informações sobre o Protocolo de Conservação Enzimática.' 
-        : 'Bună ziua! Doresc mai multe detalii despre Protocolul de Conservare Enzimatică.';
+      const defaultMsg = 'Bună ziua! Doresc mai multe detalii despre Protocolul de Conservare Enzimatică.';
       window.open(`https://wa.me/?text=${encodeURIComponent(message || defaultMsg)}`, '_blank');
     }, 1000);
   };
@@ -51,11 +45,11 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({ isOpen, onClose })
             </div>
             <div>
               <h3 className="font-bold text-lg text-[#1D1D1F] tracking-tight">
-                {isPt ? 'Suporte via WhatsApp' : 'Asistență WhatsApp'}
+                Asistență WhatsApp
               </h3>
               <div className="flex items-center gap-1.5 text-xs text-[#34C759] font-medium">
                 <span className="w-2 h-2 rounded-full bg-[#34C759] animate-pulse"></span>
-                <span>{isPt ? 'Equipe disponível online' : 'Echipă disponibilă online'}</span>
+                <span>Echipă disponibilă online</span>
               </div>
             </div>
           </div>
@@ -67,27 +61,25 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({ isOpen, onClose })
               <CheckCircle2 className="w-8 h-8" />
             </div>
             <h4 className="text-xl font-bold text-[#1D1D1F]">
-              {isPt ? 'Redirecionando para o WhatsApp...' : 'Se redirecționează către WhatsApp...'}
+              Se redirecționează către WhatsApp...
             </h4>
             <p className="text-xs text-[#86868B]">
-              {isPt ? 'Aguarde um momento enquanto conectamos você com nossa equipe.' : 'Așteaptă un moment până când te conectăm cu echipa noastră.'}
+              Așteaptă un moment până când te conectăm cu echipa noastră.
             </p>
           </div>
         ) : (
           <form onSubmit={handleSend} className="p-6 space-y-4">
             <p className="text-xs sm:text-sm text-[#86868B] leading-relaxed">
-              {isPt 
-                ? 'Tire suas dúvidas diretamente com nossos especialistas antes de finalizar seu pedido.' 
-                : 'Adresează întrebările tale direct specialiștilor noștri înainte de a plasa comanda.'}
+              Adresează întrebările tale direct specialiștilor noștri înainte de a plasa comanda.
             </p>
 
             <div>
               <label className="block text-xs font-medium text-[#86868B] mb-1.5">
-                {isPt ? 'Sua mensagem (opcional)' : 'Mesajul tău (opțional)'}
+                Mesajul tău (opțional)
               </label>
               <textarea
                 rows={3}
-                placeholder={isPt ? 'Olá! Gostaria de saber mais sobre...' : 'Bună ziua! Aș dori să aflu mai multe despre...'}
+                placeholder="Bună ziua! Aș dori să aflu mai multe despre..."
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 className="w-full p-3.5 text-sm rounded-[16px] bg-[#F5F5F7] border border-black/[0.06] text-[#1D1D1F] focus:outline-none focus:border-[#0071E3] focus:bg-white resize-none transition-all"
@@ -99,7 +91,7 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({ isOpen, onClose })
               className="w-full bg-[#34C759] hover:bg-[#30D158] active:scale-[0.98] text-white font-semibold text-sm py-3.5 px-6 rounded-full shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
               <Send className="w-4 h-4" />
-              <span>{isPt ? 'Iniciar Conversa no WhatsApp' : 'Deschide Conversația pe WhatsApp'}</span>
+              <span>Deschide Conversația pe WhatsApp</span>
             </button>
 
             <button
@@ -107,7 +99,7 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({ isOpen, onClose })
               onClick={onClose}
               className="w-full text-center text-xs text-[#86868B] hover:text-[#1D1D1F] py-1 transition-colors cursor-pointer"
             >
-              {isPt ? 'Voltar para a página' : 'Înapoi la pagină'}
+              Înapoi la pagină
             </button>
           </form>
         )}

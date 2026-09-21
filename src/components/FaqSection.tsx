@@ -16,7 +16,7 @@ interface FaqSectionProps {
 }
 
 export const FaqSection: React.FC<FaqSectionProps> = ({ onCtaClick, onWhatsAppClick }) => {
-  const { copy, lang } = useLanguage();
+  const { copy } = useLanguage();
   const { faq } = copy;
   const [openIndexes, setOpenIndexes] = useState<number[]>([0]);
 
@@ -33,7 +33,7 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onCtaClick, onWhatsAppCl
         {/* Apple Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
           <span className="text-xs font-semibold text-[#0071E3] uppercase tracking-wider block mb-2">
-            {lang === 'pt' ? 'Perguntas Frequentes' : 'Întrebări Frecvente'}
+            Întrebări Frecvente
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#1D1D1F] tracking-[-0.03em] leading-tight">
             {faq.title}
@@ -48,7 +48,7 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onCtaClick, onWhatsAppCl
             </div>
             <div>
               <span className="text-xs font-semibold text-[#0071E3] uppercase tracking-wider block mb-1">
-                {lang === 'pt' ? 'Cálculo de Custo-Benefício' : 'Calcul Cost-Beneficiu'}
+                Calcul Cost-Beneficiu
               </span>
               <p className="text-[#1D1D1F] text-sm sm:text-[15px] leading-relaxed font-normal">
                 "{faq.rationalization}"
@@ -115,7 +115,7 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onCtaClick, onWhatsAppCl
 
           <div className="text-xs text-[#86868B] flex items-center justify-center gap-1.5 pt-2">
             <ShieldCheck className="w-4 h-4 text-[#34C759]" />
-            <span>{lang === 'pt' ? 'Protegido por 15 dias de garantia incondicional' : 'Protejat prin 15 zile de garanție necondiționată'}</span>
+            <span>Protejat prin 15 zile de garanție necondiționată</span>
           </div>
         </div>
 
@@ -123,17 +123,17 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onCtaClick, onWhatsAppCl
         <footer className="mt-16 pt-8 border-t border-black/[0.06] text-center text-xs text-[#86868B] space-y-3">
           <div className="flex items-center justify-center gap-2 font-semibold text-[#1D1D1F]">
             <Leaf className="w-4 h-4 text-emerald-600" />
-            <span>{lang === 'pt' ? 'Protocolo de Conservação Enzimática' : 'Protocolul de Conservare Enzimatică'}</span>
+            <span>Protocolul de Conservare Enzimatică</span>
           </div>
           <p>{faq.footerCopyright}</p>
           <div className="flex flex-wrap items-center justify-center gap-4 text-[12px] text-[#86868B] pt-2">
-            <a href="#hero-section" className="hover:text-[#1D1D1F] transition-colors">{lang === 'pt' ? 'Início' : 'Acasă'}</a>
+            <a href="#hero-section" className="hover:text-[#1D1D1F] transition-colors">Acasă</a>
             <span>•</span>
-            <a href="#what-you-get-section" className="hover:text-[#1D1D1F] transition-colors">{lang === 'pt' ? 'O Que Recebe' : 'Ce Primești'}</a>
+            <a href="#what-you-get-section" className="hover:text-[#1D1D1F] transition-colors">Ce Primești</a>
             <span>•</span>
-            <a href="#bonuses-section" className="hover:text-[#1D1D1F] transition-colors">{lang === 'pt' ? 'Bônus' : 'Bonusuri'}</a>
+            <a href="#bonuses-section" className="hover:text-[#1D1D1F] transition-colors">Bonusuri</a>
             <span>•</span>
-            <a href="#pricing-section" className="hover:text-[#1D1D1F] transition-colors">{lang === 'pt' ? 'Preços' : 'Prețuri'}</a>
+            <a href="#pricing-section" className="hover:text-[#1D1D1F] transition-colors">Prețuri</a>
           </div>
         </footer>
 

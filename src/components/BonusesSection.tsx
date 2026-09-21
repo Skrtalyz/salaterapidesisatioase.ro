@@ -14,7 +14,7 @@ interface BonusesSectionProps {
 }
 
 export const BonusesSection: React.FC<BonusesSectionProps> = ({ onCtaClick }) => {
-  const { copy, lang } = useLanguage();
+  const { copy } = useLanguage();
   const { bonuses } = copy;
 
   const getBonusIcon = (id: number) => {
@@ -49,7 +49,7 @@ export const BonusesSection: React.FC<BonusesSectionProps> = ({ onCtaClick }) =>
           <div className="flex justify-center mt-6">
             <img
               src="https://i.imgur.com/8IoDFao.png"
-              alt={lang === 'pt' ? 'Bônus Exclusivos - 4 Guias Práticos' : 'Bonusuri Exclusive - 4 Ghiduri Practice'}
+              alt="Bonusuri Exclusive - 4 Ghiduri Practice"
               referrerPolicy="no-referrer"
               className="w-full max-w-md sm:max-w-xl h-auto object-contain drop-shadow-sm"
             />
@@ -69,7 +69,7 @@ export const BonusesSection: React.FC<BonusesSectionProps> = ({ onCtaClick }) =>
                     {getBonusIcon(bonus.id)}
                   </div>
                   <span className="bg-[#34C759]/15 text-[#248A3D] text-[11px] font-semibold px-3 py-1 rounded-full">
-                    {lang === 'pt' ? 'Incluso no Pacote' : 'Inclus în Pachet'}
+                    Inclus în Pachet
                   </span>
                 </div>
 
@@ -84,10 +84,10 @@ export const BonusesSection: React.FC<BonusesSectionProps> = ({ onCtaClick }) =>
 
               <div className="pt-3 border-t border-black/[0.06] flex items-center justify-between text-xs">
                 <div className="text-[#86868B]">
-                  {lang === 'pt' ? 'Valor individual:' : 'Valoare individuală:'} <span className="line-through text-[#86868B]">{bonus.normalPriceEur} / {bonus.normalPriceRon}</span>
+                  Valoare individuală: <span className="line-through text-[#86868B]">{bonus.normalPriceEur} / {bonus.normalPriceRon}</span>
                 </div>
                 <div className="font-semibold text-[#1D1D1F] bg-white px-2.5 py-1 rounded-full border border-black/[0.05]">
-                  {lang === 'pt' ? 'Gratuito hoje' : 'Gratuit astăzi'}
+                  Gratuit astăzi
                 </div>
               </div>
             </div>
@@ -104,7 +104,7 @@ export const BonusesSection: React.FC<BonusesSectionProps> = ({ onCtaClick }) =>
               {bonuses.bonusNotice}
             </h4>
             <p className="text-neutral-400 text-xs sm:text-sm">
-              {lang === 'pt' ? 'Sem mensalidades futuras ou taxas recorrentes ocultas.' : 'Fără abonamente lunare sau costuri recurente ascunse.'}
+              Fără abonamente lunare sau costuri recurente ascunse.
             </p>
           </div>
         </div>

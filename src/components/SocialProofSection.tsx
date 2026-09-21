@@ -2,24 +2,24 @@ import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 
 export const SocialProofSection: React.FC = () => {
-  const { copy, lang } = useLanguage();
+  const { copy } = useLanguage();
   const { socialProof } = copy;
 
   const testimonialImages = [
     {
       id: 1,
       src: 'https://i.imgur.com/fpOPm3y.png',
-      alt: lang === 'ro' ? 'Recenzie WhatsApp - Rezultate Protocol' : 'Depoimento WhatsApp - Resultados Protocolo',
+      alt: 'Recenzie WhatsApp - Rezultate Protocol',
     },
     {
       id: 2,
       src: 'https://i.imgur.com/qprvlbe.png',
-      alt: lang === 'ro' ? 'Recenzie WhatsApp - Rețete și Economie' : 'Depoimento WhatsApp - Receitas e Economia',
+      alt: 'Recenzie WhatsApp - Rețete și Economie',
     },
     {
       id: 3,
       src: 'https://i.imgur.com/mQM0qud.png',
-      alt: lang === 'ro' ? 'Recenzie WhatsApp - Digestie și Energie' : 'Depoimento WhatsApp - Digestão e Energia',
+      alt: 'Recenzie WhatsApp - Digestie și Energie',
     },
   ];
 
@@ -31,7 +31,7 @@ export const SocialProofSection: React.FC = () => {
         <div className="text-center max-w-2xl mx-auto mb-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F5F5F7] border border-black/[0.05] text-[#1D1D1F] text-xs font-semibold mb-3">
             <div className="flex text-amber-500 text-xs">★★★★★</div>
-            <span>{lang === 'pt' ? '4.9 / 5 • Mais de 1.480 avaliações' : '4.9 / 5 • Peste 1.480 recenzii'}</span>
+            <span>4.9 / 5 • Peste 1.480 recenzii</span>
           </div>
 
           <h2 className="text-2xl sm:text-4xl lg:text-[40px] font-bold text-[#1D1D1F] tracking-[-0.03em] leading-tight">
